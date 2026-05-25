@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sistema de Controle de Refeições
 
-## Getting Started
+## Aviso Ético
+Este sistema é um exercício acadêmico. Desenvolvido com foco na neutralidade e na informação, este projeto evita linguagem que reforce dietas restritivas ou metas agressivas.
 
-First, run the development server:
+## Descrição
+
+Aplicação de gerenciamento de dieta focada no controle de consumo calórico diário. O sistema permite o registro de refeições, visualização de histórico e exportação de dados (CSV) para análise externa.
+
+## Stack
+
+- Frontend: Next.js, React, Tailwind CSS
+
+- Backend: Firebase (Firestore)
+
+- Exportação: Sistema de exportação nativa em CSV com suporte a encoding UTF-8 (compatível com Excel e ferramentas de Data Science).
+
+## Instruções de Setup Local
+
+Clone o repositório:
+
+```bash
+git clone https://github.com/seu-usuario/seu-repo.git
+cd seu-repo
+```
+
+Instale as dependências:
+
+```bash
+npm install
+```
+
+Inicie o servidor:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Variáveis de Ambiente
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Crie um arquivo .env.local na raiz com as credenciais do seu Firebase:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+NEXT_PUBLIC_FIREBASE_API_KEY=sua_chave
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=seu_dominio
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=seu_projeto
+```
 
-## Learn More
+## Screenshots
 
-To learn more about Next.js, take a look at the following resources:
+## Tela Inicial
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+![Tela Inicial](/public/screenshots/tela-inicial.png)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Tela Autenticação
 
-## Deploy on Vercel
+![Tela de Login](/public/screenshots/login.png)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Dashboard de Refeições
+![Dashboard Refeições](/public/screenshots/dashboard-refeicoes.png)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Dashboard de Jejuns
+![Dashboard Jejum](/public/screenshots/dashboard-jejum.png)
+
+### Dashboard de Relatório Semanal
+![Dashboard Jejum](/public/screenshots/dashboard-relatorios.png)
+
+

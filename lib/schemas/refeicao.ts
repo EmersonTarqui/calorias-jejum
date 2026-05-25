@@ -5,7 +5,7 @@ import z from "zod";
 // regras de validacao do form - unica fonte da verdade
 export const refeicaoSchema = z.object({
   descricao: z.string().min(3, "descrição muito curta"),
-  calorias: z.number().min(0, "calorias não podem ser negativas"), 
+  calorias: z.number().min(1, "calorias devem ser maiores que zero"), 
   tipoRefeicao: z.enum(["café", "almoço", "lanche", "jantar", "ceia"]),
 });
 

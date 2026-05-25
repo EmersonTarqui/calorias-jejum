@@ -24,15 +24,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-white dark:bg-zinc-950 text-black dark:text-white">
+      {/* h-screen e flex-col para travar o espaço e dividir entre conteúdo e footer */}
+      <body className="h-screen flex flex-col bg-white dark:bg-black text-black dark:text-white overflow-hidden">
         
-        {/* renderiza as paginas da aplicacao ocupando o espaco flexivel disponivel */}
-        <main className="flex-1">
+        {/* O main ocupa todo o espaço restante de forma flexível */}
+        <main className="flex-1 flex flex-col min-h-0">
           {children}
         </main>
 
-        {/* rodape global fixo com aviso academico */}
-        <footer className="mt-8 text-sm text-zinc-500 dark:text-zinc-400 text-center border-t border-zinc-200 dark:border-zinc-800 py-6">
+        {/* Footer fixado perfeitamente no final, sem criar barra de rolagem */}
+        <footer className="w-full text-center text-xs text-zinc-500 py-6 border-t border-zinc-200 dark:border-zinc-900 bg-white dark:bg-black shrink-0">
           AVISO: Esta aplicação é um exercício acadêmico e não substitui orientação médica ou nutricional profissional.
         </footer>
       </body>

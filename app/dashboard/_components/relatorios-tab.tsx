@@ -12,12 +12,20 @@ import {
   ReferenceLine,
   CartesianGrid
 } from "recharts"
+import { RefeicaoCompleta } from "@/lib/schemas/refeicao"; 
+import { ExportButton } from "../_components/ExportButton";
 
 export function RelatoriosTab() {
   const { refeicoes, meta, historicoJejuns } = useDashboard()
 
   // evita erro do gráfico ao carregar no servidor
   const [isMounted, setIsMounted] = useState(false)
+
+  // Criamos uma versão segura dos dados
+const dadosParaExportar: RefeicaoCompleta[] = refeicoes.map(r => ({
+  ...r,
+  id: r.id || "sem-id" 
+})) as RefeicaoCompleta[];
 
   useEffect(() => {
     const timer = setTimeout(() => setIsMounted(true), 50)
@@ -123,6 +131,16 @@ export function RelatoriosTab() {
 
   return (
     <div className="space-y-6">
+      {/* Título e Botão de Exportar */}
+      <div className="flex justify-between items-center">
+        <h2 className="text-xl font-bold text-zinc-900 dark:text-white">
+          Relatórios
+        </h2>
+        {/* botao Exportar*/}
+        <ExportButton 
+          data={dadosParaExportar} 
+          filename="relatorio-refeicoes.csv" />
+      </div>
 
       {/* indicadores da semana */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">

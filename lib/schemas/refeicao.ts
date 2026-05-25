@@ -1,4 +1,5 @@
 // refeicao.ts
+import { Timestamp } from "firebase/firestore";
 import z from "zod";
 
 // schema com as regras de validacao do formulario
@@ -11,3 +12,9 @@ export const refeicaoSchema = z.object({
 
 // cria o tipo baseado no esquema pra usar no formulário
 export type RefeicaoInput = z.infer<typeof refeicaoSchema>;
+
+export interface RefeicaoCompleta extends RefeicaoInput {
+  id: string;
+  dataHora: Timestamp;
+  userId: string;
+}

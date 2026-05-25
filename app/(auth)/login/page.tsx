@@ -3,24 +3,25 @@ import { LoginForm } from "./login-form";
 
 export default function LoginPage() {
   return (
-    <main className="max-w-md mx-auto py-12 px-4 flex flex-col min-h-screen">
-      <div className="flex-grow">
-        <h1 className="text-2xl font-bold mb-6 text-center">Entrar na conta</h1>
+    <div className="flex-1 flex flex-col items-center justify-center px-4 py-12">
+      {/* Garante a largura ideal do formulário sem esmagar o conteúdo */}
+      <div className="w-full max-w-md">
+        <h1 className="text-2xl font-bold mb-6 text-center text-black dark:text-white">
+          Entrar na conta
+        </h1>
         
         <LoginForm />
 
         {/* link cadastro */}
         <div className="mt-6 text-center">
-          <Link href="/cadastro"  className="font-semibold text-black hover:text-gray-700 dark:text-white dark:hover:text-gray-300 transition-colors">
+          <Link 
+            href="/cadastro"  
+            className="font-semibold text-black hover:text-gray-700 dark:text-white dark:hover:text-gray-300 transition-colors hover:underline"
+          >
             Não tem uma conta? Cadastre-se
           </Link>
         </div>
       </div>
-
-      {/* aviso footer */}
-      <footer className="mt-8 text-xs text-gray-500 text-center border-t pt-4">
-        AVISO: esta aplicacao é um exercicio acâdemico e nao substitui orientacao médica ou nutricional profissional.
-      </footer>
-    </main>
+    </div>
   );
 }

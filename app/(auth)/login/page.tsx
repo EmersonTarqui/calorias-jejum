@@ -11,7 +11,7 @@ export default function LoginPage() {
 
         {/* link cadastro */}
         <div className="mt-6 text-center">
-          <Link href="/cadastro" className="text-sm text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white">
+          <Link href="/cadastro"  className="font-semibold text-black hover:text-gray-700 dark:text-white dark:hover:text-gray-300 transition-colors">
             Não tem uma conta? Cadastre-se
           </Link>
         </div>

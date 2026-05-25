@@ -174,7 +174,7 @@ export function LoginForm() {
       <div className="mt-4 text-center">
         <Link 
           href="/recuperar-senha" 
-          className="text-xxl text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white"
+          className="text-sm text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white"
         >
           Esqueceu a senha?
         </Link>

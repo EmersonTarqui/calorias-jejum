@@ -16,6 +16,8 @@ export function CadastroForm() {
   // hook de navegacao do next.js
   const router = useRouter()
 
+  const [verificandoAuth, setVerificandoAuth] = useState(true)
+
   // conecta com a server action e retorna:
   // estado do servidor, action do Form e se esta pendente
   const [estadoServidor, formAction, isPendingAction] = useActionState(
@@ -36,6 +38,17 @@ export function CadastroForm() {
     // faz a validacao quando o usuario sai do campo
     mode: "onBlur"
   })
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        router.push("/dashboard")
+      } else {
+        setVerificandoAuth(false)
+      }
+    })
+    return () => unsubscribe()
+  }, [router])
 
   // escuta as mudancas do servidor para criar a conta no firebase
   useEffect(() => {
@@ -84,6 +97,9 @@ export function CadastroForm() {
     }
     criarContaNoFirebase()
   }, [estadoServidor.success, form, router, sucessoFinal, isAuthPending])
+
+  // Verifica o estado Auth antes de renderizar qualquer coisa - MOVIDO PARA O FINAL
+  if (verificandoAuth) return null
 
   function onSubmit(data: CadastroInput) {
     setMensagemFirebase("")

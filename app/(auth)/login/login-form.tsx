@@ -17,6 +17,8 @@ export function LoginForm() {
   // hook de navegacao do next.js
   const router = useRouter()
 
+  const [verificandoAuth, setVerificandoAuth] = useState(true)
+
   // conecta com a server action e retorna:
   // estado do servidor, action do Form e se esta pendente
   const [estadoServidor, formAction, isPendingAction] = useActionState(
@@ -37,6 +39,18 @@ export function LoginForm() {
     // faz a validacao quando o usuario sai do campo
     mode: "onBlur"
   })
+
+  // escuta o estado de autenticacao e redireciona
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        router.push("/dashboard")
+      } else {
+        setVerificandoAuth(false)
+      }
+    })
+    return () => unsubscribe()
+  }, [router])
 
   // escuta as mudancas do servidor para fazer o login no firebase
   useEffect(() => {
@@ -71,6 +85,9 @@ export function LoginForm() {
     }
     logarNoFirebase()
   }, [estadoServidor.success, form, router, sucessoFinal, isAuthPending])
+
+  // Verifica o estado de Auth antes de renderizar qualquer coisa - MOVIDO PARA O FINAL
+  if (verificandoAuth) return null
 
   function onSubmit(data: LoginInput) {
     setMensagemFirebase("")
@@ -154,14 +171,14 @@ export function LoginForm() {
       </button>
 
       {/* Link para recuperação de senha */}
-<div className="mt-4 text-center">
-  <Link 
-    href="/recuperar-senha" 
-    className="text-xxl text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white"
-  >
-    Esqueceu a senha?
-  </Link>
-</div>
+      <div className="mt-4 text-center">
+        <Link 
+          href="/recuperar-senha" 
+          className="text-xxl text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white"
+        >
+          Esqueceu a senha?
+        </Link>
+      </div>
     </form>
   )
 }

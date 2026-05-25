@@ -8,6 +8,8 @@ import {
   deleteDoc, 
   doc,       
   updateDoc,
+  getDoc,
+  setDoc,
   orderBy,
   Timestamp 
 } from "firebase/firestore";
@@ -65,4 +67,20 @@ export async function atualizarRefeicao(id: string, dadosAtualizados: any) {
 // remove o registro da base de dados localizando pelo id
 export async function deletarRefeicao(id: string) {
   await deleteDoc(doc(db, "refeicoes", id));
+}
+
+// busca a meta diária do usuário ou retorna 2000 como padrão
+export async function buscarMeta(userId: string): Promise<number> {
+  const docRef = doc(db, "usuarios", userId);
+  const docSnap = await getDoc(docRef);
+  
+  if (docSnap.exists()) {
+    return docSnap.data().metaDiaria || 2000;
+  }
+  return 2000;
+}
+
+export async function salvarMeta(userId: string, meta: number) {
+  const docRef = doc(db, "usuarios", userId);
+  await setDoc(docRef, { metaDiaria: meta }, { merge: true });
 }

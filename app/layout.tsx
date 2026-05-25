@@ -23,17 +23,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
-      {/* h-screen e flex-col para travar o espaço e dividir entre conteúdo e footer */}
-      <body className="h-screen flex flex-col bg-white dark:bg-black text-black dark:text-white overflow-hidden">
+    <html lang="pt-BR" className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className="min-h-screen flex flex-col bg-white dark:bg-black text-black dark:text-white">
         
-        {/* O main ocupa todo o espaço restante de forma flexível */}
-        <main className="flex-1 flex flex-col min-h-0">
+        <main className="flex-1 flex flex-col">
           {children}
         </main>
 
-        {/* Footer fixado perfeitamente no final, sem criar barra de rolagem */}
-        <footer className="w-full text-center text-xs text-zinc-500 py-6 border-t border-zinc-200 dark:border-zinc-900 bg-white dark:bg-black shrink-0">
+        <footer className="w-full text-center text-xs text-zinc-500 py-6 border-t border-zinc-200 dark:border-zinc-900 bg-white dark:bg-black mt-auto">
           AVISO: Esta aplicação é um exercício acadêmico e não substitui orientação médica ou nutricional profissional.
         </footer>
       </body>

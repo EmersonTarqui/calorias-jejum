@@ -54,7 +54,7 @@ export default function DashboardLayout({
           <h1 className="font-bold text-2xl text-zinc-900 dark:text-white">Meu Painel</h1>
           
           <div className="flex items-center gap-4">
-            <span className="text-sm text-zinc-500 dark:text-zinc-400 hidden sm:block">
+           <span className="text-sm text-zinc-500 dark:text-zinc-400">
               Olá, <span className="font-semibold text-zinc-900 dark:text-zinc-200">{usuario?.displayName || usuario?.email?.split('@')[0]}</span>
             </span>
             
